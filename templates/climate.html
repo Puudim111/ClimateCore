@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Clima local — ClimateCore{% endblock %}
+
+{% block content %}
+<section class="page-head">
+    <p class="eyebrow">CLIMA LOCAL</p>
+    <h1>Como está o clima na sua região?</h1>
+    <p>Consulte condições atuais e uma série histórica aproximada.</p>
+</section>
+
+<form class="search-form" method="POST">
+    <input type="text" name="city" value="{{ city }}" placeholder="Digite uma cidade, ex.: São Paulo" required>
+    <button class="button primary" type="submit">Pesquisar</button>
+</form>
+
+{% if error %}
+<div class="alert">{{ error }}</div>
+{% endif %}
+
+{% if weather %}
+<section class="climate-grid">
+    <div class="panel current-weather">
+        <p class="eyebrow">{{ weather.city }}, {{ weather.country }}</p>
+        <div class="temperature">{{ weather.temperature_2m }}°C</div>
+        <div class="weather-details">
+            <div><span>Sensação</span><strong>{{ weather.apparent_temperature }}°C</strong></div>
+            <div><span>Umidade</span><strong>{{ weather.relative_humidity_2m }}%</strong></div>
+            <div><span>Precipitação</span><strong>{{ weather.precipitation }} mm</strong></div>
+            <div><span>Vento</span><strong>{{ weather.wind_speed_10m }} km/h</strong></div>
+            <div><span>Pressão</span><strong>{{ weather.surface_pressure }} hPa</strong></div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <p class="eyebrow">HISTÓRICO</p>
+        <h2>Temperatura média anual</h2>
+        {% if chart %}
+            <img class="chart" src="{{ chart }}" alt="Temperatura média anual">
+        {% endif %}
+        {% if history %}
+            <p class="small-note">
+                Período consultado: {{ history.start }} até {{ history.end }}.
+                O histórico depende da disponibilidade da fonte meteorológica.
+            </p>
+        {% endif %}
+    </div>
+</section>
+{% endif %}
+{% endblock %}

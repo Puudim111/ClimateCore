@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}Calculadora de CO₂ — ClimateCore{% endblock %}
+
+{% block content %}
+<section class="page-head">
+    <p class="eyebrow">CALCULADORA</p>
+    <h1>Quanto CO₂ você emite?</h1>
+    <p>Uma estimativa educativa baseada nos fatores definidos no projeto.</p>
+</section>
+
+<section class="two-column">
+    <form class="panel form-panel" method="POST">
+        <h2>Seus dados</h2>
+
+        <label>Distância percorrida por mês (km)
+            <input type="number" name="distance" min="0" step="0.1" required>
+        </label>
+
+        <label>Viagens/uso por mês
+            <input type="number" name="trips" min="0" step="1" required>
+        </label>
+
+        <label>Combustível
+            <select name="fuel">
+                <option value="gasoline">Gasolina</option>
+                <option value="ethanol">Etanol</option>
+                <option value="diesel">Diesel</option>
+            </select>
+        </label>
+
+        <label>Consumo de energia elétrica por mês (kWh)
+            <input type="number" name="electricity" min="0" step="0.1" required>
+        </label>
+
+        <label>Alimentação — indicador mensal simplificado
+            <input type="number" name="food" min="0" step="0.1" required>
+        </label>
+
+        <button class="button primary full" type="submit">Calcular</button>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </form>
+
+    {% if result %}
+    <section class="panel result-panel">
+        <p class="eyebrow">RESULTADO</p>
+        <div class="big-number">{{ result.monthly }} <small>kg CO₂/mês</small></div>
+        <div class="big-number secondary-number">{{ result.yearly }} <small>kg CO₂/ano</small></div>
+
+        <div class="mini-list">
+            {% for name, value in result.categories.items() %}
+            <div>
+                <span>{{ name }}</span>
+                <strong>{{ value }} kg</strong>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if chart %}
+            <img class="chart" src="{{ chart }}" alt="Gráfico das emissões por categoria">
+        {% endif %}
+
+        <p class="small-note">{{ result.note }}</p>
+    </section>
+    {% else %}
+    <section class="panel empty-state">
+        <span class="card-icon">CO₂</span>
+        <h2>Descubra seu resultado</h2>
+        <p>Preencha os dados ao lado para gerar uma estimativa e um gráfico.</p>
+    </section>
+    {% endif %}
+</section>
+{% endblock %}

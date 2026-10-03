@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Sobre — ClimateCore{% endblock %}
+
+{% block content %}
+<section class="page-head">
+    <p class="eyebrow">SOBRE O PROJETO</p>
+    <h1>ClimateCore</h1>
+    <p>Um projeto de hackathon que conecta programação, APIs e dados ambientais.</p>
+</section>
+
+<section class="two-column">
+    <article class="panel">
+        <h2>Problema</h2>
+        <p>Dados climáticos podem ser complexos e difíceis de interpretar. O projeto busca transformá-los em informações visuais e acessíveis.</p>
+    </article>
+
+    <article class="panel">
+        <h2>Tecnologia</h2>
+        <p>Python, Flask, HTML e CSS. Os gráficos são produzidos no backend com Python.</p>
+    </article>
+</section>
+
+<section class="panel methodology">
+    <h2>Fontes e metodologia</h2>
+    <ul>
+        <li>Clima: Open-Meteo.</li>
+        <li>Emissões: Our World in Data / Global Carbon Project.</li>
+        <li>Referências climáticas: NASA, NOAA, NSIDC, ESA e IPCC.</li>
+        <li>Notícias: feeds RSS das fontes configuradas.</li>
+    </ul>
+    <p class="small-note">Verifique sempre a documentação e a disponibilidade atual das fontes antes da apresentação.</p>
+</section>
+{% endblock %}

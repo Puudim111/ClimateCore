@@ -1,0 +1,297 @@
+{% extends "base.html" %}
+{% block title %}ClimateCore — Início{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="hero-copy">
+
+        <p class="eyebrow">
+            TECNOLOGIA + CLIMA + DADOS
+        </p>
+
+        <h1>
+            Entenda o clima.<br>
+            <span>Transforme dados em ação.</span>
+        </h1>
+
+        <p class="hero-text">
+            O ClimateCore reúne dados climáticos, emissões de CO₂,
+            mudanças no gelo polar e soluções ambientais em uma única experiência.
+        </p>
+
+        <div class="actions">
+
+            <a
+                class="button primary"
+                href="{{ url_for('calculator.calculator') }}"
+            >
+                Calcular meu CO₂
+            </a>
+
+            <a
+                class="button secondary"
+                href="{{ url_for('climate.climate') }}"
+            >
+                Explorar clima
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- URSO POLAR -->
+
+    <div class="hero-visual">
+
+        <img
+            src="{{ url_for('static', filename='images/polar_bear.png') }}"
+            alt="Urso polar minimalista representando as mudanças climáticas"
+            class="polar-bear"
+        >
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="section-heading">
+
+        <p class="eyebrow">
+            EXPLORE
+        </p>
+
+        <h2>
+            O que está acontecendo?
+        </h2>
+
+        <p>
+            Veja diferentes partes do problema climático e os dados por trás delas.
+        </p>
+
+    </div>
+
+
+    <div class="card-grid">
+
+
+        <a
+            class="feature-card"
+            href="{{ url_for('calculator.calculator') }}"
+        >
+
+            <span class="card-icon">
+                CO₂
+            </span>
+
+            <h3>
+                Calculadora de CO₂
+            </h3>
+
+            <p>
+                Estime suas emissões mensais e anuais por categorias.
+            </p>
+
+        </a>
+
+
+        <a
+            class="feature-card"
+            href="{{ url_for('climate.climate') }}"
+        >
+
+            <span class="card-icon">
+                °C
+            </span>
+
+            <h3>
+                Clima local
+            </h3>
+
+            <p>
+                Consulte o clima atual e compare temperaturas históricas.
+            </p>
+
+        </a>
+
+
+        <a
+            class="feature-card"
+            href="{{ url_for('emissions.emissions') }}"
+        >
+
+            <span class="card-icon">
+                ↗
+            </span>
+
+            <h3>
+                20 anos de emissões
+            </h3>
+
+            <p>
+                Observe a evolução das emissões globais de CO₂.
+            </p>
+
+        </a>
+
+
+        <a
+            class="feature-card"
+            href="{{ url_for('ice.ice') }}"
+        >
+
+            <span class="card-icon">
+                ICE
+            </span>
+
+            <h3>
+                Gelo polar
+            </h3>
+
+            <p>
+                Entenda a diferença entre gelo marinho,
+                mantos de gelo e geleiras.
+            </p>
+
+        </a>
+
+
+        <a
+            class="feature-card"
+            href="{{ url_for('impact.impacts') }}"
+        >
+
+            <span class="card-icon">
+                !
+            </span>
+
+            <h3>
+                Impactos
+            </h3>
+
+            <p>
+                Veja sistemas e comunidades afetados
+                pelas mudanças climáticas.
+            </p>
+
+        </a>
+
+
+
+        <a
+            class="feature-card"
+            href="{{ url_for('solutions.solutions') }}"
+        >
+
+            <span class="card-icon">
+                +
+            </span>
+
+            <h3>
+                Soluções
+            </h3>
+
+            <p>
+                Conheça caminhos tecnológicos e sociais
+                para reduzir emissões.
+            </p>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<section class="process">
+
+    <p class="eyebrow">
+        COMO FUNCIONA
+    </p>
+
+    <div class="process-row">
+
+        <span>
+            DADOS
+        </span>
+
+        <b>
+            →
+        </b>
+
+        <span>
+            ANÁLISE
+        </span>
+
+        <b>
+            →
+        </b>
+
+        <span>
+            VISUALIZAÇÃO
+        </span>
+
+        <b>
+            →
+        </b>
+
+        <span>
+            CONSCIENTIZAÇÃO
+        </span>
+
+        <b>
+            →
+        </b>
+
+        <span>
+            AÇÃO
+        </span>
+
+    </div>
+
+</section>
+
+<section class="videos-section">
+    <div class="section-heading">
+        <p class="eyebrow">
+            VÍDEOS
+        </p>
+
+        <h2>
+            Entenda as mudanças climáticas
+        </h2>
+
+        <p>
+            Assista a vídeos selecionados sobre mudanças climáticas,
+            aquecimento global e preservação ambiental.
+        </p>
+    </div>
+
+    <div class="videos-container">
+
+        {% for video in videos %}
+
+            <div class="video-card">
+
+                <iframe
+                    src="https://www.youtube.com/embed/{{ video.id }}"
+                    title="{{ video.title }}"
+                    allowfullscreen>
+                </iframe>
+
+                <h3>
+                    {{ video.title }}
+                </h3>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+</section>
+
+{% endblock %}

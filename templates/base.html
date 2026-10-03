@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ClimateCore — dados climáticos transformados em informação.">
+    <title>{% block title %}ClimateCore{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header class="site-header">
+    <a class="brand" href="{{ url_for('home') }}">
+        <span class="brand-mark">C</span>
+        <span>Climate<span>Core</span></span>
+    </a>
+
+    <input class="menu-toggle" type="checkbox" id="menu-toggle">
+    <label class="menu-button" for="menu-toggle" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+    </label>
+
+    <nav class="main-nav">
+        <a href="{{ url_for('home') }}">Início</a>
+        <a href="{{ url_for('calculator.calculator') }}">CO₂</a>
+        <a href="{{ url_for('climate.climate') }}">Clima local</a>
+        <a href="{{ url_for('emissions.emissions') }}">Emissões</a>
+        <a href="{{ url_for('ice.ice') }}">Calotas</a>
+        <a href="{{ url_for('impact.impacts') }}">Impactos</a>
+        <a href="{{ url_for('future.future') }}">Futuro</a>
+        <a href="{{ url_for('news.news') }}">Notícias</a>
+        <a href="{{ url_for('solutions.solutions') }}">Soluções</a>
+        <a href="{{ url_for('main.about') }}">Sobre</a>
+    </nav>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+    <p>ClimateCore · Projeto educacional de tecnologia e clima.</p>
+    <p>Dados externos podem ter limitações, períodos diferentes e metodologias próprias.</p>
+</footer>
+</body>
+</html>

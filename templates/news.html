@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}
+ClimateCore — Notícias
+{% endblock %}
+
+{% block content %}
+
+<section class="page-head">
+
+    <p class="eyebrow">
+        ATUALIZAÇÕES
+    </p>
+
+    <h1>
+        Notícias sobre o clima
+    </h1>
+
+    <p>
+        Acompanhe notícias recentes relacionadas às mudanças climáticas,
+        emissões de CO₂, gelo polar e meio ambiente.
+    </p>
+
+</section>
+
+
+<section class="news-list">
+
+    {% if articles %}
+
+        {% for article in articles %}
+
+        <article class="news-card">
+
+            <div>
+
+                <small>
+                    {{ article.source }}
+                </small>
+
+                <h2>
+                    {{ article.title }}
+                </h2>
+
+                {% if article.description %}
+
+                <p>
+                    {{ article.description }}
+                </p>
+
+                {% endif %}
+
+                {% if article.published_at %}
+
+                <small>
+                    {{ article.published_at }}
+                </small>
+
+                {% endif %}
+
+            </div>
+
+
+            <a
+                class="button secondary"
+                href="{{ article.url }}"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Ler notícia →
+            </a>
+
+        </article>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="panel empty-state">
+
+            <h2>
+                Não foi possível carregar as notícias.
+            </h2>
+
+            <p>
+                Verifique sua API Key ou tente novamente mais tarde.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}

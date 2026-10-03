@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Emissões — ClimateCore{% endblock %}
+
+{% block content %}
+<section class="page-head">
+    <p class="eyebrow">20 ANOS</p>
+    <h1>Evolução das emissões de CO₂</h1>
+    <p>Dados globais apresentados para visualizar a evolução das emissões ao longo do tempo.</p>
+</section>
+
+<section class="panel">
+    {% if chart %}
+        <img class="chart large-chart" src="{{ chart }}" alt="Evolução das emissões globais de CO2">
+    {% else %}
+        <div class="alert">Os dados não puderam ser carregados neste momento.</div>
+    {% endif %}
+
+    <div class="source-box">
+        <strong>Fonte:</strong> {{ data.source }}<br>
+        <strong>Unidade:</strong> {{ data.unit }}
+    </div>
+</section>
+{% endblock %}
