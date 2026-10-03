@@ -9,6 +9,7 @@ from routes.news import news_bp
 from routes.impact import impact_bp
 from routes.future import future_bp
 from routes.solutions import solutions_bp
+
 from services.youtube_api import get_climate_videos
 
 
@@ -25,7 +26,6 @@ def home():
     )
 
 
-app.register_blueprint(main_bp)
 app.register_blueprint(calculator_bp)
 app.register_blueprint(climate_bp)
 app.register_blueprint(emissions_bp)
